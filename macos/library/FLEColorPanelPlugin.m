@@ -54,7 +54,6 @@ static NSNumber *WrapColorComponent(CGFloat component) {
 - (nullable id)handlePlatformMessage:(NSDictionary *)message {
   if ([message.allKeys containsObject:kSystemMessageMethodKey]) {
     NSString *methodName = message[kSystemMessageMethodKey];
-    NSLog(@"rx.log %@ %@", methodName, kShowColorPanelMethod);
     if ([methodName isEqualToString:kShowColorPanelMethod]) {
       [self showColorPanel];
     } else if ([methodName isEqualToString:kHideColorPanelMethod]) {
@@ -67,14 +66,12 @@ static NSNumber *WrapColorComponent(CGFloat component) {
   }
 
   return nil;
-
 }
 
 /**
  * Configures the shared instance of NSColorPanel and makes it the frontmost & key window.
  */
 - (void)showColorPanel {
-  NSLog(@"=> showColorPanel");
   NSColorPanel *sharedColor = [NSColorPanel sharedColorPanel];
   [sharedColor setTarget:self];
   [sharedColor setAction:@selector(selectedColorDidChange)];

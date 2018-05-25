@@ -11,22 +11,21 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#ifndef LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_FILE_CHOOSER_PLUGIN_H_
+#define LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_FILE_CHOOSER_PLUGIN_H_
+#include "plugin.h"
 
-/**
- * Protocol for views owned by FLEViewController to handle context changes, specifically relating to
- * OpenGL context changes.
- */
-@protocol FLEOpenGLContextHandling
+namespace flutter_desktop_embedding {
 
-/**
- * Sets the receiver as the current context object.
- */
-- (void)makeCurrentContext;
+// Implements a file chooser plugin.
+class FileChooserPlugin : public Plugin {
+ public:
+  FileChooserPlugin();
+  virtual ~FileChooserPlugin();
 
-/**
- * Called when the display is updated. In an NSOpenGLView this is best handled via a flushBuffer
- * call.
- */
-- (void)onPresent;
+  Json::Value HandlePlatformMessage(const Json::Value &message) override;
+};
 
-@end
+}  // namespace flutter_desktop_embedding
+
+#endif  // LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_FILE_CHOOSER_PLUGIN_H_

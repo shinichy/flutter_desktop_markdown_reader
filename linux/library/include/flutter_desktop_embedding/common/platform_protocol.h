@@ -11,22 +11,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#ifndef LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_COMMON_PLATFORM_PROTOCOL_H_
+#define LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_COMMON_PLATFORM_PROTOCOL_H_
 
-/**
- * Protocol for views owned by FLEViewController to handle context changes, specifically relating to
- * OpenGL context changes.
- */
-@protocol FLEOpenGLContextHandling
+// Defines a set of common JSON keys for communicating with the Flutter Engine's
+// platform message protocol.
+namespace flutter_desktop_embedding {
 
-/**
- * Sets the receiver as the current context object.
- */
-- (void)makeCurrentContext;
+extern const char kMethodKey[];
+extern const char kArgumentsKey[];
 
-/**
- * Called when the display is updated. In an NSOpenGLView this is best handled via a flushBuffer
- * call.
- */
-- (void)onPresent;
+}  // namespace flutter_desktop_embedding
 
-@end
+#endif  // LINUX_INCLUDE_FLUTTER_DESKTOP_EMBEDDING_COMMON_PLATFORM_PROTOCOL_H_

@@ -79,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
         final res = call.arguments;
 
         if (res['result'] == 1) {
-          final List<String> paths = res['paths'];
+          final List<dynamic> paths = res['paths'];
           if (paths.length == 1) {
             final selectedEntity = new File(paths.first);
             if (paths.first.endsWith('.md')) {
@@ -92,7 +92,7 @@ class _MainScreenState extends State<MainScreen> {
                 currentFolderEntities = null;
               });
             } else if (selectedEntity.statSync().type ==
-                FileSystemEntityType.DIRECTORY) {
+                FileSystemEntityType.directory) {
               _openDirectory(selectedEntity);
             }
           }

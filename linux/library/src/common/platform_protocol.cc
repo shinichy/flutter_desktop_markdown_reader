@@ -11,22 +11,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#include <flutter_desktop_embedding/common/platform_protocol.h>
 
-/**
- * Protocol for views owned by FLEViewController to handle context changes, specifically relating to
- * OpenGL context changes.
- */
-@protocol FLEOpenGLContextHandling
+namespace flutter_desktop_embedding {
 
-/**
- * Sets the receiver as the current context object.
- */
-- (void)makeCurrentContext;
+constexpr char kMethodKey[] = "method";
+constexpr char kArgumentsKey[] = "args";
 
-/**
- * Called when the display is updated. In an NSOpenGLView this is best handled via a flushBuffer
- * call.
- */
-- (void)onPresent;
-
-@end
+}  // namespace flutter_desktop_embedding
